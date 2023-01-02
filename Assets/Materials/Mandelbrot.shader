@@ -63,14 +63,14 @@ Shader "Explorer/Mandelbrot"
 
                 float2 z;
                 float iter;
-                for (iter = 0; iter < 255; iter++) {
+                for (iter = 0; iter < _MaxIter; iter++) {
                     z = float2(z.x * z.x - z.y * z.y, 2*z.x*z.y) + c;
                     if (length(z) > 2) break;
                 }
 
                 //float m = sqrt(iter / )
-                //float m = sqrt(iter/_MaxIter);
-                float m = iter / 255;
+                float m = sqrt(iter/_MaxIter);
+                //float m = iter / _MaxIter;
                 float4 col = sin(float4(.3, .45, .65, 1) * m * 20) * .5 + .5;
                 //return iter/255;
                 return col;
